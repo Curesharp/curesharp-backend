@@ -1,6 +1,6 @@
 package com.curesharp.model;
 
-import com.curesharp.util.Raca;
+import com.curesharp.util.RacaEnum;
 
 public class Gestante {
 
@@ -8,7 +8,7 @@ public class Gestante {
     private Long idUsuario;
     private String nome;
     private String rg;
-    private Raca raca;
+    private RacaEnum racaEnum;
     private Long contato;
 
     public Long getIdGestante() {
@@ -43,12 +43,12 @@ public class Gestante {
         this.rg = rg;
     }
 
-    public Raca getRaca() {
-        return raca;
+    public RacaEnum getRaca() {
+        return racaEnum;
     }
 
-    public void setRaca(Raca raca) {
-        this.raca = raca;
+    public void setRaca(RacaEnum racaEnum) {
+        this.racaEnum = racaEnum;
     }
 
     public Long getContato() {

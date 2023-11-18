@@ -2,7 +2,7 @@ package com.curesharp.repository;
 
 import com.curesharp.config.h2.ConnectionFactoryH2;
 import com.curesharp.model.Gestante;
-import com.curesharp.util.Raca;
+import com.curesharp.util.RacaEnum;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,7 +44,7 @@ public class GestanteRepository {
             gestante.setIdUsuario(rs.getLong(2));
             gestante.setNome(rs.getString(3));
             gestante.setRg(rs.getString(4));
-            gestante.setRaca(Raca.valueOf(rs.getString(5)));
+            gestante.setRaca(RacaEnum.valueOf(rs.getString(5)));
             gestante.setContato(rs.getLong(6));
 
             listaGestantes.add(gestante);
@@ -67,7 +67,7 @@ public class GestanteRepository {
             gestante.setIdUsuario(rs.getLong(2));
             gestante.setNome(rs.getString(3));
             gestante.setRg(rs.getString(4));
-            gestante.setRaca(Raca.valueOf(rs.getString(5)));
+            gestante.setRaca(RacaEnum.valueOf(rs.getString(5)));
             gestante.setContato(rs.getLong(6));
         }
 
@@ -88,7 +88,7 @@ public class GestanteRepository {
             gestante.setIdUsuario(rs.getLong(2));
             gestante.setNome(rs.getString(3));
             gestante.setRg(rs.getString(4));
-            gestante.setRaca(Raca.valueOf(rs.getString(5)));
+            gestante.setRaca(RacaEnum.valueOf(rs.getString(5)));
             gestante.setContato(rs.getLong(6));
         }
 

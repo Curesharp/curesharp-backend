@@ -1,6 +1,6 @@
 package com.curesharp.util;
 
-public enum Raca {
+public enum RacaEnum {
     BRANCA,
     PARDA,
     NEGRA,
