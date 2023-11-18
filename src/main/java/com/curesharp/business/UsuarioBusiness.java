@@ -4,7 +4,6 @@ package com.curesharp.business;
 import com.curesharp.model.Usuario;
 import com.curesharp.repository.UsuarioRepository;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UsuarioBusiness {
@@ -29,7 +28,7 @@ public class UsuarioBusiness {
 
     public  Usuario bucarUsuarioPorId(Long id) throws Exception {
         repository = new UsuarioRepository();
-        Usuario usuario = repository.bucarPorId(id);
+        Usuario usuario = repository.bucarPorID(id);
 
         if(usuario.getIdUsuario() == null){
             throw new Exception("O usuário não foi encontrado");
@@ -51,7 +50,7 @@ public class UsuarioBusiness {
 
     public void atualizarUsuario(Long id, Usuario usuario) throws Exception {
         repository = new UsuarioRepository();
-        Usuario usuarioBanco = repository.bucarPorId(id);
+        Usuario usuarioBanco = repository.bucarPorID(id);
 
         if(usuarioBanco.getIdUsuario() == null){
             throw new Exception("Não foi possivel encontrar esse usuário");
@@ -62,7 +61,7 @@ public class UsuarioBusiness {
 
     public void deletarUsuario(Long id) throws Exception {
         repository = new UsuarioRepository();
-        Usuario usuario = repository.bucarPorId(id);
+        Usuario usuario = repository.bucarPorID(id);
 
         if(usuario.getIdUsuario() == null){
             throw new Exception("Não foi possivel encontrar esse usuário");

@@ -52,7 +52,7 @@ public class UsuarioRepository {
         return listaUsuarios;
     }
 
-    public Usuario bucarPorId(Long id) throws SQLException {
+    public Usuario bucarPorID(Long id) throws SQLException {
         Usuario usuario = new Usuario();
         PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM USUARIO WHERE ID_USUARIO = ?");
         stmt.setLong(1, id);
