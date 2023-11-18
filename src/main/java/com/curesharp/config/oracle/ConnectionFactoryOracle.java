@@ -1,10 +1,10 @@
-package com.curesharp.config;
+package com.curesharp.config.oracle;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionFactory {
+public class ConnectionFactoryOracle {
     public Connection conexao() throws ClassNotFoundException, SQLException {
 
         Class.forName("oracle.jdbc.driver.OracleDriver");

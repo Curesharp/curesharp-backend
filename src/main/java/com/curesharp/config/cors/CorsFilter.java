@@ -1,4 +1,4 @@
-package com.curesharp.config;
+package com.curesharp.config.cors;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

@@ -10,13 +10,11 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
 
-  <!-- adicionando os servlet dependencias(bibliotecas) do que vai ser utilizado
-		no projeto -->
 
   <servlet>
     <servlet-name>jersey-servlet</servlet-name>
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-    <!--vão dizer aonde vão estar os pacotes ou seja as classes -->
+
     <init-param>
       <param-name>jersey.config.server.provider.packages</param-name>
       <param-value>com.curesharp.controller</param-value>
@@ -35,14 +33,40 @@
     <url-pattern>/*</url-pattern>
   </servlet-mapping>
 
+
+
+
+  <!-- Configuração do H2 Console -->
+  <servlet>
+    <servlet-name>H2Console</servlet-name>
+    <servlet-class>org.h2.server.web.WebServlet</servlet-class>
+    <init-param>
+      <param-name>-properties</param-name>
+      <param-value>webAllowOthers=true</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>H2Console</servlet-name>
+    <url-pattern>/h2/*</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- Configuração do Swagger UI -->
+
+
+
+
+
+  <!-- Configuração do Cors -->
   <filter>
     <filter-name>CorsFilter</filter-name>
-    <filter-class>com.curesharp.config.CorsFilter</filter-class>
+    <filter-class>com.curesharp.config.cors.CorsFilter</filter-class>
   </filter>
 
   <filter-mapping>
     <filter-name>CorsFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-
 </web-app>
