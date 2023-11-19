@@ -2,8 +2,6 @@ package com.curesharp.repository;
 
 import com.curesharp.config.h2.ConnectionFactoryH2;
 import com.curesharp.model.Feto;
-import com.curesharp.model.Gestante;
-import com.curesharp.util.RacaEnum;
 import com.curesharp.util.SexoEnum;
 
 import java.sql.Connection;
@@ -13,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class FetoRepository {
+
     public Connection conexao;
 
     public FetoRepository() throws SQLException, ClassNotFoundException {

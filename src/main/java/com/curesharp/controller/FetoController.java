@@ -2,7 +2,6 @@ package com.curesharp.controller;
 
 import com.curesharp.business.FetoBusiness;
 import com.curesharp.model.Feto;
-import com.curesharp.model.Gestante;
 import com.curesharp.util.ErrorResponse;
 
 import javax.ws.rs.*;
@@ -39,7 +38,7 @@ public class FetoController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response buscaPorId(@PathParam("id") Long id) throws Exception {
+    public Response buscaPorId(@PathParam("id") Long id){
         try {
             Feto feto = business.bucarFetoPorId(id);
             return Response.status(Response.Status.OK).entity(feto).build();
@@ -50,9 +49,9 @@ public class FetoController {
     }
 
     @GET
-    @Path("/rg-da-mae/{rg}")
+    @Path("/rg-da-gestante/{rg}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response buscaPorEmail(@PathParam("rg") String rg) throws Exception {
+    public Response buscaPorRgDaMae(@PathParam("rg") String rg){
         try {
             ArrayList<Feto> feto = business.bucarFetoPorRGDaGestante(rg);
             return Response.status(Response.Status.OK).entity(feto).build();
@@ -65,7 +64,7 @@ public class FetoController {
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response atualiza(@PathParam("id") Long id, Feto feto) throws Exception {
+    public Response atualiza(@PathParam("id") Long id, Feto feto){
         try {
             business.atualizarFeto(id, feto);
             return Response.accepted().build();
@@ -78,7 +77,7 @@ public class FetoController {
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleta(@PathParam("id") Long id) throws Exception {
+    public Response deleta(@PathParam("id") Long id){
         try {
             business.deletarFeto(id);
             return Response.noContent().build();
