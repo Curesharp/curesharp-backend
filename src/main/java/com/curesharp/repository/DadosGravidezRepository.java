@@ -32,7 +32,7 @@ public class DadosGravidezRepository {
         stmt.setFloat(6, dadosGravidez.getFrequenciaCardiaca());
         stmt.setFloat(7, dadosGravidez.getTemperaturaCorporalGravidez());
         stmt.setString(8, String.valueOf(dadosGravidez.getRisco()));
-        stmt.setTimestamp(9, new java.sql.Timestamp(dadosGravidez.getDataDaAvaliacao().getTime()));
+        stmt.setTimestamp(9, new java.sql.Timestamp(dadosGravidez.getDataAvaliacao().getTime()));
         stmt.execute();
         stmt.close();
 
@@ -56,7 +56,7 @@ public class DadosGravidezRepository {
             dadosGravidez.setFrequenciaCardiaca(rs.getFloat(7));
             dadosGravidez.setTemperaturaCorporalGravidez(rs.getFloat(8));
             dadosGravidez.setRisco(RiscoEnum.valueOf(rs.getString(9)));
-            dadosGravidez.setDataDaAvaliacao(rs.getTimestamp(10));
+            dadosGravidez.setDataAvaliacao(rs.getTimestamp(10));
 
             listaDados.add(dadosGravidez);
         }
@@ -83,7 +83,7 @@ public class DadosGravidezRepository {
             dadosGravidez.setFrequenciaCardiaca(rs.getFloat(7));
             dadosGravidez.setTemperaturaCorporalGravidez(rs.getFloat(8));
             dadosGravidez.setRisco(RiscoEnum.valueOf(rs.getString(9)));
-            dadosGravidez.setDataDaAvaliacao(rs.getTimestamp(10));
+            dadosGravidez.setDataAvaliacao(rs.getTimestamp(10));
         }
 
         rs.close();
@@ -109,7 +109,7 @@ public class DadosGravidezRepository {
             dadosGravidez.setFrequenciaCardiaca(rs.getFloat(7));
             dadosGravidez.setTemperaturaCorporalGravidez(rs.getFloat(8));
             dadosGravidez.setRisco(RiscoEnum.valueOf(rs.getString(9)));
-            dadosGravidez.setDataDaAvaliacao(rs.getTimestamp(10));
+            dadosGravidez.setDataAvaliacao(rs.getTimestamp(10));
 
             listaDados.add(dadosGravidez);
         }
@@ -140,7 +140,7 @@ public class DadosGravidezRepository {
             dadosGravidez.setFrequenciaCardiaca(rs.getFloat(7));
             dadosGravidez.setTemperaturaCorporalGravidez(rs.getFloat(8));
             dadosGravidez.setRisco(RiscoEnum.valueOf(rs.getString(9)));
-            dadosGravidez.setDataDaAvaliacao(rs.getTimestamp(10));
+            dadosGravidez.setDataAvaliacao(rs.getTimestamp(10));
 
             listaDados.add(dadosGravidez);
         }
@@ -162,7 +162,7 @@ public class DadosGravidezRepository {
         stmt.setFloat(5, dadosGravidez.getFrequenciaCardiaca());
         stmt.setFloat(6, dadosGravidez.getTemperaturaCorporalGravidez());
         stmt.setString(7, String.valueOf(dadosGravidez.getRisco()));
-        stmt.setTimestamp(8, new java.sql.Timestamp(dadosGravidez.getDataDaAvaliacao().getTime()));
+        stmt.setTimestamp(8, new java.sql.Timestamp(dadosGravidez.getDataAvaliacao().getTime()));
         stmt.setLong(9, id);
         stmt.execute();
         stmt.close();

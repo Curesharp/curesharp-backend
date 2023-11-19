@@ -1,11 +1,8 @@
-package com.curesharp.model;
+package com.curesharp.dto;
 
 import com.curesharp.util.SaudeEnum;
 
-import java.util.Date;
-
-public class DadosFeto {
-
+public class DadosSelecionarDadosFeto {
     private Long idDadosFeto;
     private Long idFeto;
     private int idade;
@@ -21,7 +18,7 @@ public class DadosFeto {
     private Float porcentagemTempoVariacaoAnormal;
     private Float mediaVariacaoLongoPrazo;
     private Float larguraHistograma;
-    private Float valorMinimoHistograma;
+    private Float valorMininoHistograma;
     private Float valorMaximoHistograma;
     private Float numeroPicosHistograma;
     private Float numeroZerosHistograma;
@@ -31,7 +28,36 @@ public class DadosFeto {
     private Float varianciaHistograma;
     private Float tendenciaHistograma;
     private SaudeEnum saudeFeto;
-    private Date dataAvaliacao;
+    private String dataAvaliacao;
+
+    public DadosSelecionarDadosFeto(Long idDadosFeto, Long idFeto, int idade, Float frequenciaCardiaca, Float aceleracoes, Float movimentoFetalPorSegundo, Float contracoes, Float desaceleracoes, Float desaceleracoesSeveras, Float desaceleracoesProlongadas, Float variacaoAnormalCurtoPrazo, Float variacaoMediaCurtoPrazo, Float porcentagemTempoVariacaoAnormal, Float mediaVariacaoLongoPrazo, Float larguraHistograma, Float valorMininoHistograma, Float valorMaximoHistograma, Float numeroPicosHistograma, Float numeroZerosHistograma, Float moduloHistograma, Float mediaHistograma, Float medianaHistograma, Float varianciaHistograma, Float tendenciaHistograma, SaudeEnum saudeFeto, String dataAvaliacao) {
+        this.idDadosFeto = idDadosFeto;
+        this.idFeto = idFeto;
+        this.idade = idade;
+        this.frequenciaCardiaca = frequenciaCardiaca;
+        this.aceleracoes = aceleracoes;
+        this.movimentoFetalPorSegundo = movimentoFetalPorSegundo;
+        this.contracoes = contracoes;
+        this.desaceleracoes = desaceleracoes;
+        this.desaceleracoesSeveras = desaceleracoesSeveras;
+        this.desaceleracoesProlongadas = desaceleracoesProlongadas;
+        this.variacaoAnormalCurtoPrazo = variacaoAnormalCurtoPrazo;
+        this.variacaoMediaCurtoPrazo = variacaoMediaCurtoPrazo;
+        this.porcentagemTempoVariacaoAnormal = porcentagemTempoVariacaoAnormal;
+        this.mediaVariacaoLongoPrazo = mediaVariacaoLongoPrazo;
+        this.larguraHistograma = larguraHistograma;
+        this.valorMininoHistograma = valorMininoHistograma;
+        this.valorMaximoHistograma = valorMaximoHistograma;
+        this.numeroPicosHistograma = numeroPicosHistograma;
+        this.numeroZerosHistograma = numeroZerosHistograma;
+        this.moduloHistograma = moduloHistograma;
+        this.mediaHistograma = mediaHistograma;
+        this.medianaHistograma = medianaHistograma;
+        this.varianciaHistograma = varianciaHistograma;
+        this.tendenciaHistograma = tendenciaHistograma;
+        this.saudeFeto = saudeFeto;
+        this.dataAvaliacao = dataAvaliacao;
+    }
 
     public Long getIdDadosFeto() {
         return idDadosFeto;
@@ -153,12 +179,12 @@ public class DadosFeto {
         this.larguraHistograma = larguraHistograma;
     }
 
-    public Float getValorMinimoHistograma() {
-        return valorMinimoHistograma;
+    public Float getValorMininoHistograma() {
+        return valorMininoHistograma;
     }
 
     public void setValorMinimoHistograma(Float valorMininoHistograma) {
-        this.valorMinimoHistograma = valorMininoHistograma;
+        this.valorMininoHistograma = valorMininoHistograma;
     }
 
     public Float getValorMaximoHistograma() {
@@ -233,12 +259,11 @@ public class DadosFeto {
         this.saudeFeto = saudeFeto;
     }
 
-    public Date getDataAvaliacao() {
+    public String getDataAvaliacao() {
         return dataAvaliacao;
     }
 
-    public void setDataAvaliacao(Date dataAvaliacao) {
+    public void setDataAvaliacao(String dataAvaliacao) {
         this.dataAvaliacao = dataAvaliacao;
     }
 }
-

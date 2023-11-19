@@ -15,7 +15,7 @@ public class DadosGravidez {
     private Float frequenciaCardiaca;
     private Float temperaturaCorporalGravidez;
     private RiscoEnum risco;
-    private Date dataDaAvaliacao;
+    private Date dataAvaliacao;
 
     public Long getIdDadosGravidez() {
         return idDadosGravidez;
@@ -89,12 +89,12 @@ public class DadosGravidez {
         this.risco = risco;
     }
 
-    public Date getDataDaAvaliacao() {
-        return dataDaAvaliacao;
+    public Date getDataAvaliacao() {
+        return dataAvaliacao;
     }
 
-    public void setDataDaAvaliacao(Date dataDaAvaliacao) {
-        this.dataDaAvaliacao = dataDaAvaliacao;
+    public void setDataAvaliacao(Date dataAvaliacao) {
+        this.dataAvaliacao = dataAvaliacao;
     }
 
 }

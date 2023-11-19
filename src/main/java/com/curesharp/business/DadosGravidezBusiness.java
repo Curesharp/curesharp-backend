@@ -19,11 +19,11 @@ public class DadosGravidezBusiness {
     public DadosInserirDadosGravidez inserirDadosGravidez(DadosGravidez dadosGravidez) throws Exception {
         repository = new DadosGravidezRepository();
 
-        dadosGravidez.setDataDaAvaliacao(new Date());
+        dadosGravidez.setDataAvaliacao(new Date());
         repository.inserir(dadosGravidez);
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return new DadosInserirDadosGravidez(dadosGravidez.getRisco(), sdf.format(dadosGravidez.getDataDaAvaliacao()));
+        return new DadosInserirDadosGravidez(dadosGravidez.getRisco(), sdf.format(dadosGravidez.getDataAvaliacao()));
     }
 
     public ArrayList<DadosSelecionarDadosGravidez> listarDadosGravidez() throws Exception {
@@ -42,7 +42,7 @@ public class DadosGravidezBusiness {
                     dadosGravidez.getFrequenciaCardiaca(),
                     dadosGravidez.getTemperaturaCorporalGravidez(),
                     dadosGravidez.getRisco(),
-                    sdf.format(dadosGravidez.getDataDaAvaliacao())
+                    sdf.format(dadosGravidez.getDataAvaliacao())
             );
 
             listaDTO.add(dadosGravidezDTO);
@@ -68,7 +68,7 @@ public class DadosGravidezBusiness {
                     dadosGravidez.getFrequenciaCardiaca(),
                     dadosGravidez.getTemperaturaCorporalGravidez(),
                     dadosGravidez.getRisco(),
-                    sdf.format(dadosGravidez.getDataDaAvaliacao())
+                    sdf.format(dadosGravidez.getDataAvaliacao())
             );
 
             return dadosGravidezDTO;
@@ -98,7 +98,7 @@ public class DadosGravidezBusiness {
                     dadosGravidez.getFrequenciaCardiaca(),
                     dadosGravidez.getTemperaturaCorporalGravidez(),
                     dadosGravidez.getRisco(),
-                    sdf.format(dadosGravidez.getDataDaAvaliacao())
+                    sdf.format(dadosGravidez.getDataAvaliacao())
             );
 
             listaDTO.add(dadosGravidezDTO);
@@ -132,7 +132,7 @@ public class DadosGravidezBusiness {
                     dadosGravidez.getFrequenciaCardiaca(),
                     dadosGravidez.getTemperaturaCorporalGravidez(),
                     dadosGravidez.getRisco(),
-                    sdf.format(dadosGravidez.getDataDaAvaliacao())
+                    sdf.format(dadosGravidez.getDataAvaliacao())
             );
 
             listaDTO.add(dadosGravidezDTO);
@@ -148,7 +148,7 @@ public class DadosGravidezBusiness {
         if(dadosBanco.getIdDadosGravidez() == null){
             throw new Exception("Não foi possivel encontrar esse cadastro");
         }
-        dadosGravidez.setDataDaAvaliacao(new Date());
+        dadosGravidez.setDataAvaliacao(new Date());
 
         repository.alterar(id, dadosGravidez);
     }
