@@ -19,9 +19,9 @@ Entregável de Domain Driven Design da Global Solution 2023
 
 <h2>Rotas disponiveis</h2>
 - /</br>
-- /login</br>- 
+- /login</br>
 - /usuario</br>
 - /gestante</br>
-- /feto</br>- 
+- /feto</br>
 - /dados/feto</br>
 - /dados/gestante</br>
