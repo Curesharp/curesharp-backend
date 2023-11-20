@@ -49,7 +49,7 @@ public class FetoController {
     }
 
     @GET
-    @Path("/rg-da-gestante/{rg}")
+    @Path("/gestante/rg/{rg}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response buscaPorRgDaMae(@PathParam("rg") String rg){
         try {

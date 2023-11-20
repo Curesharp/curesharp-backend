@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 
-@Path("/dados-gravidez")
+@Path("/dados/gravidez")
 public class DadosGravidezController {
 
     private DadosGravidezBusiness business = new DadosGravidezBusiness();
@@ -51,7 +51,7 @@ public class DadosGravidezController {
     }
 
     @GET
-    @Path("/id-da-gestante/{id}")
+    @Path("/gestante/id/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response buscaPorIdDaGestante(@PathParam("id") Long id){
         try {
@@ -64,7 +64,7 @@ public class DadosGravidezController {
     }
 
     @GET
-    @Path("/rg-da-gestante/{rg}")
+    @Path("/gestante/rg/{rg}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response buscaPorRGDaGestante(@PathParam("rg") String rg){
         try {
