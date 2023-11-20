@@ -13,7 +13,7 @@ Entregável de Domain Driven Design da Global Solution 2023
 
 <hr>
   <h2>Rota da aplicação</h2>
-- http://contexto:8080/bikelock/(rota desejada)
+- http://contexto:8080/curesharp/(rota desejada)
 
 <hr>
 
