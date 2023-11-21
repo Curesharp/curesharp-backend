@@ -25,3 +25,8 @@ Entregável de Domain Driven Design da Global Solution 2023
 - /feto</br>
 - /dados/feto</br>
 - /dados/gestante</br>
+
+<h2>Rotas liberadas pelo filtro do JWT</h2>
+- /<br>
+- /login</br>
+- /usuario (POST)
