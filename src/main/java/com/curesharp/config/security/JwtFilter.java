@@ -39,9 +39,7 @@ public class JwtFilter implements ContainerRequestFilter {
         String rota = requestContext.getUriInfo().getPath();
         String metodo = requestContext.getMethod();
 
-        if(rota.equals("login") || rota.equals("") || rota.equals("token/user")){
-            return true;
-        }else if(metodo.equals("POST") && rota.equals("usuario")){
+        if(rota.equals("login") || rota.equals("") || rota.equals("cadastro") || rota.equals("token/user")){
             return true;
         }else{
             return false;

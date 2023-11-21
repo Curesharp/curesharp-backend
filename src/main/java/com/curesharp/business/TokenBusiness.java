@@ -1,5 +1,6 @@
 package com.curesharp.business;
 
+import com.curesharp.dto.DadosResponseUsuario;
 import com.curesharp.model.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -8,7 +9,7 @@ import io.jsonwebtoken.Jwts;
 public class TokenBusiness {
 
 
-    public Usuario pegarUsuarioPeloToken(String tokeHeader) throws Exception {
+    public DadosResponseUsuario pegarUsuarioPeloToken(String tokeHeader) throws Exception {
         try {
             String token = extrairToken(tokeHeader);
 
@@ -22,7 +23,13 @@ public class TokenBusiness {
             UsuarioBusiness business = new UsuarioBusiness();
             Usuario usuario = business.bucarUsuarioPorEmail(claims.getSubject());
 
-            return usuario;
+            DadosResponseUsuario dadosUsuario = new DadosResponseUsuario(
+                    usuario.getIdUsuario(),
+                    usuario.getEmail(),
+                    usuario.getNome()
+            );
+
+            return dadosUsuario;
         } catch (Exception e) {
             throw new Exception("Token JWT inválido");
         }

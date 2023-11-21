@@ -15,22 +15,6 @@ public class UsuarioController {
     private UsuarioBusiness business = new UsuarioBusiness();
     ErrorResponse error = new ErrorResponse();
 
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response cadastra(Usuario usuario){
-        try {
-            business.inserirUsuario(usuario);
-            return Response.status(Response.Status.CREATED)
-                    .build();
-        }catch (Exception e){
-            error.setErro(e.getMessage());
-            return Response.status(Response.Status.BAD_REQUEST).entity(error).build();
-        }
-
-    }
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Usuario> lista() throws Exception {

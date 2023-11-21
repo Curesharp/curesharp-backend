@@ -1,7 +1,7 @@
 package com.curesharp.controller;
 
 import com.curesharp.business.TokenBusiness;
-import com.curesharp.model.Usuario;
+import com.curesharp.dto.DadosResponseUsuario;
 import com.curesharp.util.ErrorResponse;
 
 import javax.ws.rs.GET;
@@ -23,7 +23,7 @@ public class TokenController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response userPeloToken(ContainerRequestContext requestContext) throws Exception {
         try {
-            Usuario usuario = business.pegarUsuarioPeloToken(requestContext.getHeaders().getFirst(HttpHeaders.AUTHORIZATION));
+            DadosResponseUsuario usuario = business.pegarUsuarioPeloToken(requestContext.getHeaders().getFirst(HttpHeaders.AUTHORIZATION));
             return Response.status(Response.Status.OK).entity(usuario).build();
         } catch (Exception e) {
             error.setErro(e.getMessage());
