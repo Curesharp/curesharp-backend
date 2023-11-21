@@ -1,6 +1,5 @@
 package com.curesharp.business;
 
-
 import com.curesharp.model.Usuario;
 import com.curesharp.repository.UsuarioRepository;
 
