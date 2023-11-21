@@ -19,9 +19,7 @@ public class AuthenticationService {
 
         if(usuarioAutenticado){
             return Jwts.builder()
-                    .setSubject(dadosLoginUsuario.getEmail())
-                    .setSubject(dadosLoginUsuario.getSenha())
-                    .setSubject(usuario.getNome())
+                    .setSubject(usuario.getEmail())
                     .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                     .compact();
         } else {
