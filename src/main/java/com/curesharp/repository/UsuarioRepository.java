@@ -1,6 +1,5 @@
 package com.curesharp.repository;
 
-import com.curesharp.business.UsuarioBusiness;
 import com.curesharp.config.h2.ConnectionFactoryH2;
 import com.curesharp.model.Usuario;
 
