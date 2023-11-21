@@ -40,8 +40,6 @@
   </servlet-mapping>
 
 
-
-
   <!-- Configuração do H2 Console -->
   <servlet>
     <servlet-name>H2Console</servlet-name>
