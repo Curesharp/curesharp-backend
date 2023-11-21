@@ -22,7 +22,8 @@ public class UsuarioController {
     public Response cadastra(Usuario usuario){
         try {
             business.inserirUsuario(usuario);
-            return Response.status(Response.Status.CREATED).build();
+            return Response.status(Response.Status.CREATED)
+                    .build();
         }catch (Exception e){
             error.setErro(e.getMessage());
             return Response.status(Response.Status.BAD_REQUEST).entity(error).build();

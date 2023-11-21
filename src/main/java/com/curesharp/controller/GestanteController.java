@@ -4,6 +4,7 @@ import com.curesharp.business.GestanteBusiness;
 import com.curesharp.model.Gestante;
 import com.curesharp.util.ErrorResponse;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -31,6 +32,7 @@ public class GestanteController {
     }
 
     @GET
+    @RolesAllowed("USER")
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Gestante> lista() throws Exception {
         return business.listarGestantes();
