@@ -1,13 +1,15 @@
 package com.curesharp.business;
 
-import com.curesharp.dto.DadosInserirDadosFeto;
+import com.curesharp.dto.DadosAnalisarDadosFeto;
 import com.curesharp.dto.DadosSelecionarDadosFeto;
+import com.curesharp.integration.IA;
 import com.curesharp.model.DadosFeto;
 import com.curesharp.model.Feto;
 import com.curesharp.model.Gestante;
 import com.curesharp.repository.DadosFetoRepository;
 import com.curesharp.repository.FetoRepository;
 import com.curesharp.repository.GestanteRepository;
+import com.curesharp.util.SaudeEnum;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,16 +18,21 @@ import java.util.Date;
 public class DadosFetoBusiness {
 
     private DadosFetoRepository repository;
+    private IA iaIntegration;
+
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-    public DadosInserirDadosFeto inserirDadosFeto(DadosFeto dadosFeto) throws Exception {
+    public DadosAnalisarDadosFeto inserirDadosFeto(DadosFeto dadosFeto) throws Exception {
         repository = new DadosFetoRepository();
+        iaIntegration = new IA();
 
+        SaudeEnum saudeFeto = iaIntegration.analisarSaudeFeto(dadosFeto);
+        dadosFeto.setSaudeFeto(saudeFeto);
         dadosFeto.setDataAvaliacao(new Date());
         repository.inserir(dadosFeto);
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return new DadosInserirDadosFeto(dadosFeto.getSaudeFeto(), sdf.format(dadosFeto.getDataAvaliacao()));
+        return new DadosAnalisarDadosFeto(dadosFeto.getSaudeFeto(), sdf.format(dadosFeto.getDataAvaliacao()));
     }
 
     public ArrayList<DadosSelecionarDadosFeto> listarDadosFeto() throws Exception {
@@ -210,16 +217,23 @@ public class DadosFetoBusiness {
         return listaDTO;
     }
 
-    public void alterarDadosFeto(Long id, DadosFeto dadosFeto) throws Exception {
+    public DadosAnalisarDadosFeto alterarDadosFeto(Long id, DadosFeto dadosFeto) throws Exception {
         repository = new DadosFetoRepository();
+        iaIntegration = new IA();
 
         DadosFeto verificacaoFeto = repository.buscarPorId(id);
         if(verificacaoFeto.getIdDadosFeto() == null){
             throw new Exception("O ID digitado é inválido.");
         }
 
+        SaudeEnum saudeFeto = iaIntegration.analisarSaudeFeto(dadosFeto);
+        dadosFeto.setSaudeFeto(saudeFeto);
         dadosFeto.setDataAvaliacao(new Date());
+
         repository.alterar(id, dadosFeto);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return new DadosAnalisarDadosFeto(dadosFeto.getSaudeFeto(), sdf.format(dadosFeto.getDataAvaliacao()));
     }
 
     public void deletarDadosFeto(Long id) throws Exception {

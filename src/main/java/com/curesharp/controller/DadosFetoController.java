@@ -82,8 +82,9 @@ public class DadosFetoController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response altera(@PathParam("id") Long id, DadosFeto dadosFeto){
         try {
-            business.alterarDadosFeto(id, dadosFeto);
-            return Response.status(Response.Status.ACCEPTED).build();
+            return Response.status(Response.Status.ACCEPTED)
+                    .entity(business.alterarDadosFeto(id, dadosFeto))
+                    .build();
         }catch (Exception e){
             error.setErro(e.getMessage());
             return Response.status(Response.Status.NOT_FOUND).entity(error).build();

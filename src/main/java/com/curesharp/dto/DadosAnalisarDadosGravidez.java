@@ -2,12 +2,12 @@ package com.curesharp.dto;
 
 import com.curesharp.util.RiscoEnum;
 
-public class DadosInserirDadosGravidez {
+public class DadosAnalisarDadosGravidez {
 
     private RiscoEnum risco;
     private String dataDaAvaliacao;
 
-    public DadosInserirDadosGravidez(RiscoEnum risco, String dataDaAvaliacao) {
+    public DadosAnalisarDadosGravidez(RiscoEnum risco, String dataDaAvaliacao) {
         this.risco = risco;
         this.dataDaAvaliacao = dataDaAvaliacao;
     }

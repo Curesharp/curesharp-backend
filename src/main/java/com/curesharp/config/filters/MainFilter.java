@@ -32,6 +32,7 @@ public class MainFilter implements Filter {
 //        }
 //
 //        String token = extractToken(request.getHeader(HttpHeaders.AUTHORIZATION));
+//        System.out.println(token);
 //
 //        try {
 //            validateToken(token);
@@ -45,8 +46,8 @@ public class MainFilter implements Filter {
 
     private void configureCORS(HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization");
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setHeader("Vary", "Origin");
 

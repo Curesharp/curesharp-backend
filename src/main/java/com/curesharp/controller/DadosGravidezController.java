@@ -81,8 +81,9 @@ public class DadosGravidezController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response atualiza(@PathParam("id") Long id, DadosGravidez dadosGravidez){
         try {
-            business.atualizarDadosGravidez(id, dadosGravidez);
-            return Response.accepted().build();
+            return Response.accepted()
+                    .entity(business.atualizarDadosGravidez(id, dadosGravidez))
+                    .build();
         }catch (Exception e){
             error.setErro(e.getMessage());
             return Response.status(Response.Status.NOT_FOUND).entity(error).build();

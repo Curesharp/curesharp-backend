@@ -1,6 +1,6 @@
 package com.curesharp.business;
 
-import com.curesharp.dto.DadosInserirDadosGravidez;
+import com.curesharp.dto.DadosAnalisarDadosGravidez;
 import com.curesharp.dto.DadosSelecionarDadosGravidez;
 import com.curesharp.integration.IA;
 import com.curesharp.model.DadosGravidez;
@@ -20,18 +20,19 @@ public class DadosGravidezBusiness {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 
-    public DadosInserirDadosGravidez inserirDadosGravidez(DadosGravidez dadosGravidez) throws Exception {
+    public DadosAnalisarDadosGravidez inserirDadosGravidez(DadosGravidez dadosGravidez) throws Exception {
         repository = new DadosGravidezRepository();
         iaIntegration = new IA();
 
-        RiscoEnum riscoGravidez = iaIntegration.analisarRiscoGravidez(dadosGravidez);
+        RiscoEnum risco = iaIntegration.analisarRiscoGravidez(dadosGravidez);
 
-        dadosGravidez.setRisco(riscoGravidez);
+        dadosGravidez.setRisco(risco);
         dadosGravidez.setDataAvaliacao(new Date());
         repository.inserir(dadosGravidez);
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return new DadosInserirDadosGravidez(dadosGravidez.getRisco(), sdf.format(dadosGravidez.getDataAvaliacao()));
+        return new DadosAnalisarDadosGravidez(dadosGravidez.getRisco(),
+                sdf.format(dadosGravidez.getDataAvaliacao()));
     }
 
     public ArrayList<DadosSelecionarDadosGravidez> listarDadosGravidez() throws Exception {
@@ -149,16 +150,25 @@ public class DadosGravidezBusiness {
         return listaDTO;
     }
 
-    public void atualizarDadosGravidez(Long id, DadosGravidez dadosGravidez) throws Exception {
+    public DadosAnalisarDadosGravidez atualizarDadosGravidez(Long id, DadosGravidez dadosGravidez) throws Exception {
         repository = new DadosGravidezRepository();
-        DadosGravidez dadosBanco = repository.bucarPorID(id);
+        iaIntegration = new IA();
 
-        if(dadosBanco.getIdDadosGravidez() == null){
+        DadosGravidez dadosBanco = repository.bucarPorID(id);
+        if(dadosBanco == null){
             throw new Exception("Não foi possivel encontrar esse cadastro");
         }
+
+        RiscoEnum risco = iaIntegration.analisarRiscoGravidez(dadosGravidez);
+        dadosGravidez.setRisco(risco);
+        dadosGravidez.setDataAvaliacao(new Date());
         dadosGravidez.setDataAvaliacao(new Date());
 
         repository.alterar(id, dadosGravidez);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return new DadosAnalisarDadosGravidez(dadosGravidez.getRisco(),
+                sdf.format(dadosGravidez.getDataAvaliacao()));
     }
 
     public void deletarDadosGravidez(Long id) throws Exception {

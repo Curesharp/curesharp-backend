@@ -1,10 +1,11 @@
 package com.curesharp;
 
-import com.curesharp.dto.RespostaDaIA;
 import com.curesharp.model.DadosGravidez;
 import com.curesharp.util.RiscoEnum;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.io.IOException;
 import java.net.URI;
@@ -18,13 +19,11 @@ public class teste {
         DadosGravidez dadosGravidez = new DadosGravidez(40,
                 120f,
                 60f,
-                6f,
-                36.67f,
+                50f,
+                31233f,
                 72f);
 
-        RespostaDaIA reposta = null;
-
-        String URL = "http://127.0.0.1:5000/maternal";
+        String URL = "http://127.0.0.1:5000/fetal";
 
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode json = objectMapper.createObjectNode();
@@ -44,18 +43,10 @@ public class teste {
                 .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
 
-        RiscoEnum risco;
-        if(response.body().equals("baixo risco")){
-            risco = RiscoEnum.BAIXO;
-        } else if (response.body().equals("médio risco"))
-            risco = RiscoEnum.MEDIO;
-        else{
-            risco = RiscoEnum.BAIXO;
-        }
+        JsonObject jsonObject = JsonParser.parseString(response.body()).getAsJsonObject();
+        String valor = jsonObject.get("risco").getAsString();
 
-
-        System.out.println(risco);
+        System.out.println(RiscoEnum.valueOf(valor));
     }
 }

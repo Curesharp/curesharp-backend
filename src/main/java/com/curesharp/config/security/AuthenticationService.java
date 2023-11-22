@@ -15,11 +15,11 @@ public class AuthenticationService {
         boolean usuarioAutenticado = autenticacaoUsuario(dadosLoginUsuario);
 
         UsuarioRepository repository = new UsuarioRepository();
-        Usuario usuario = repository.bucarPorEmail(dadosLoginUsuario.getEmail());
+        Usuario usuario = repository.bucarPorEmail(dadosLoginUsuario.getEmail().toLowerCase());
 
         if(usuarioAutenticado){
             return Jwts.builder()
-                    .setSubject(usuario.getEmail())
+                    .setSubject(usuario.getEmail().toLowerCase())
                     .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                     .compact();
         } else {
