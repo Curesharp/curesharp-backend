@@ -29,5 +29,5 @@ Entregável de Domain Driven Design da Global Solution 2023
 <h2>Rotas liberadas pelo filtro do JWT</h2>
 - /health<br>
 - /login</br>
-- /cadastro
-- /token/user
+- /cadastro</br>
+- /token/user</br>
