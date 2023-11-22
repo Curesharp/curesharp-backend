@@ -3,7 +3,6 @@ package com.curesharp.config.filters;
 import com.curesharp.util.ErrorResponse;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.SignatureException;
-import org.apache.http.HttpHeaders;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -25,24 +24,22 @@ public class MainFilter implements Filter {
 
         // Configuração do CORS
         configureCORS(httpResponse);
-        System.out.println("Cors liberado");
 
-        if(isRotaLiberada(request)){
-            chain.doFilter(req, res);
-            System.out.println("rota liberada");
-            return;
-        }
+        //Configuração JWT
+//        if(isRotaLiberada(request)){
+//            chain.doFilter(req, res);
+//            return;
+//        }
+//
+//        String token = extractToken(request.getHeader(HttpHeaders.AUTHORIZATION));
+//
+//        try {
+//            validateToken(token);
+//        } catch (SignatureException e) {
+//            handleInvalidToken(httpResponse);
+//            return;
+//        }
 
-        String token = extractToken(request.getHeader(HttpHeaders.AUTHORIZATION));
-        System.out.println(request.getHeaders(HttpHeaders.CONTENT_TYPE));
-        System.out.println(token);
-
-        try {
-            validateToken(token);
-        } catch (SignatureException e) {
-            handleInvalidToken(httpResponse);
-            return;
-        }
         chain.doFilter(req, res);
     }
 
