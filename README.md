@@ -6,10 +6,10 @@ Entregável de Domain Driven Design da Global Solution 2023
 <h2>Passos para rodar a aplicação</h2>
 
 - Baixar o projeto (.zip ou via git clone)
-- Abrir o projeto na IDE  
+- Abrir o projeto na IDE
 - Configurar o plugin do Tomcat no IntelliJ ou IDE de escolha
-- Rodar a aplicação com Tomcat 
-- Obter um software para teste de API (Insomnia ou Postman) 
+- Rodar a aplicação com Tomcat
+- Obter um software para teste de API (Insomnia ou Postman)
 
 <hr>
   <h2>Rota da aplicação</h2>
@@ -27,6 +27,7 @@ Entregável de Domain Driven Design da Global Solution 2023
 - /dados/gestante</br>
 
 <h2>Rotas liberadas pelo filtro do JWT</h2>
-- /<br>
+- /health<br>
 - /login</br>
-- /usuario (POST)
+- /cadastro
+- /token/user
