@@ -17,6 +17,22 @@ public class DadosGravidez {
     private RiscoEnum risco;
     private Date dataAvaliacao;
 
+    public DadosGravidez() {
+    }
+
+    public DadosGravidez(int idadeGestante, Float pressaoSanguineaSistolica, Float pressaoSanguineaDiastolica, Float nivelGlicoseSangue, Float frequenciaCardiaca, Float temperaturaCorporalGravidez) {
+        this.idDadosGravidez = idDadosGravidez;
+        this.idGestante = idGestante;
+        this.idadeGestante = idadeGestante;
+        this.pressaoSanguineaSistolica = pressaoSanguineaSistolica;
+        this.pressaoSanguineaDiastolica = pressaoSanguineaDiastolica;
+        this.nivelGlicoseSangue = nivelGlicoseSangue;
+        this.frequenciaCardiaca = frequenciaCardiaca;
+        this.temperaturaCorporalGravidez = temperaturaCorporalGravidez;
+        this.risco = risco;
+        this.dataAvaliacao = dataAvaliacao;
+    }
+
     public Long getIdDadosGravidez() {
         return idDadosGravidez;
     }

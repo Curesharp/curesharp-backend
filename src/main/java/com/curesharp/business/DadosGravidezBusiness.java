@@ -2,10 +2,12 @@ package com.curesharp.business;
 
 import com.curesharp.dto.DadosInserirDadosGravidez;
 import com.curesharp.dto.DadosSelecionarDadosGravidez;
+import com.curesharp.integration.IA;
 import com.curesharp.model.DadosGravidez;
 import com.curesharp.model.Gestante;
 import com.curesharp.repository.DadosGravidezRepository;
 import com.curesharp.repository.GestanteRepository;
+import com.curesharp.util.RiscoEnum;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,12 +15,18 @@ import java.util.Date;
 
 public class DadosGravidezBusiness {
 
+    private IA iaIntegration;
     private DadosGravidezRepository repository;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
+
     public DadosInserirDadosGravidez inserirDadosGravidez(DadosGravidez dadosGravidez) throws Exception {
         repository = new DadosGravidezRepository();
+        iaIntegration = new IA();
 
+        RiscoEnum riscoGravidez = iaIntegration.analisarRiscoGravidez(dadosGravidez);
+
+        dadosGravidez.setRisco(riscoGravidez);
         dadosGravidez.setDataAvaliacao(new Date());
         repository.inserir(dadosGravidez);
 

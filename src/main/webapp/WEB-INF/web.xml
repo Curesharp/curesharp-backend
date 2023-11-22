@@ -33,6 +33,16 @@
 
     <load-on-startup>1</load-on-startup>
 
+    <!-- Configuração do Cors e demais filtros-->
+    <filter>
+      <filter-name>MainFilter</filter-name>
+      <filter-class>com.curesharp.config.filters.MainFilter</filter-class>
+    </filter>
+    <filter-mapping>
+      <filter-name>MainFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <servlet>
       <servlet-name>JerseyServlet</servlet-name>
       <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
@@ -42,9 +52,7 @@
       </init-param>
       <load-on-startup>1</load-on-startup>
     </servlet>
-
   </servlet>
-
   <servlet-mapping>
     <servlet-name>jersey-servlet</servlet-name>
     <url-pattern>/*</url-pattern>
@@ -70,19 +78,5 @@
 
   <!-- Configuração do Swagger UI -->
 
-
-
-
-
-  <!-- Configuração do Cors -->
-  <filter>
-    <filter-name>CorsFilter</filter-name>
-    <filter-class>com.curesharp.config.cors.CorsFilter</filter-class>
-  </filter>
-
-  <filter-mapping>
-    <filter-name>CorsFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
 
 </web-app>
