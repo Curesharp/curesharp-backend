@@ -1,6 +1,7 @@
 package com.curesharp.model;
 
 public class Usuario {
+
     private Long idUsuario;
     private String email;
     private String nome;

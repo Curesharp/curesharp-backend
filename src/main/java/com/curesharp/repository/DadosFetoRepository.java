@@ -186,6 +186,54 @@ public class DadosFetoRepository {
         return listaDados;
     }
 
+    public ArrayList<DadosFeto> buscarPorIdDaMae(Long id) throws SQLException, ParseException {
+        ArrayList<DadosFeto> listaDados = new ArrayList<>();
+
+        PreparedStatement stmt = conexao.prepareStatement("SELECT D.* FROM DADOS_FETO D " +
+                "INNER JOIN FETO F ON D.ID_FETO = F.ID_FETO " +
+                "INNER JOIN GESTANTE G ON F.ID_GESTANTE = G.ID_GESTANTE " +
+                "WHERE G.ID_GESTANTE = ?");
+        stmt.setLong(1, id);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()){
+            DadosFeto dadosFeto = new DadosFeto();
+            dadosFeto.setIdDadosFeto(rs.getLong(1));
+            dadosFeto.setIdFeto(rs.getLong(2));
+            dadosFeto.setIdade(rs.getInt(3));
+            dadosFeto.setFrequenciaCardiaca(rs.getFloat(4));
+            dadosFeto.setAceleracoes(rs.getFloat(5));
+            dadosFeto.setMovimentoFetalPorSegundo(rs.getFloat(6));
+            dadosFeto.setContracoes(rs.getFloat(7));
+            dadosFeto.setDesaceleracoes(rs.getFloat(8));
+            dadosFeto.setDesaceleracoesSeveras(rs.getFloat(9));
+            dadosFeto.setDesaceleracoesProlongadas(rs.getFloat(10));
+            dadosFeto.setVariacaoAnormalCurtoPrazo(rs.getFloat(11));
+            dadosFeto.setVariacaoMediaCurtoPrazo(rs.getFloat(12));
+            dadosFeto.setPorcentagemTempoVariacaoAnormal(rs.getFloat(13));
+            dadosFeto.setMediaVariacaoLongoPrazo(rs.getFloat(14));
+            dadosFeto.setLarguraHistograma(rs.getFloat(15));
+            dadosFeto.setValorMinimoHistograma(rs.getFloat(16));
+            dadosFeto.setValorMaximoHistograma(rs.getFloat(17));
+            dadosFeto.setNumeroPicosHistograma(rs.getFloat(18));
+            dadosFeto.setNumeroZerosHistograma(rs.getFloat(19));
+            dadosFeto.setModuloHistograma(rs.getFloat(20));
+            dadosFeto.setMediaHistograma(rs.getFloat(21));
+            dadosFeto.setMedianaHistograma(rs.getFloat(21));
+            dadosFeto.setVarianciaHistograma(rs.getFloat(23));
+            dadosFeto.setTendenciaHistograma(rs.getFloat(24));
+            dadosFeto.setSaudeFeto(SaudeEnum.valueOf(rs.getString(25)));
+            dadosFeto.setDataAvaliacao(rs.getTimestamp(26));
+
+            listaDados.add(dadosFeto);
+        }
+
+        rs.close();
+        stmt.close();
+
+        return listaDados;
+    }
+
     public ArrayList<DadosFeto> buscarPorRgDaMae(String rg) throws SQLException, ParseException {
         ArrayList<DadosFeto> listaDados = new ArrayList<>();
 

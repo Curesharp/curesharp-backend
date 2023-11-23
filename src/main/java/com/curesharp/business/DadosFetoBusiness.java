@@ -167,6 +167,57 @@ public class DadosFetoBusiness {
         return listaDTO;
     }
 
+    public ArrayList<DadosSelecionarDadosFeto> buscarDadosFetoPorIdDaMae(Long id) throws Exception {
+        repository = new DadosFetoRepository();
+        ArrayList<DadosSelecionarDadosFeto> listaDTO = new ArrayList<>();
+
+        GestanteRepository gestanteRepository = new GestanteRepository();
+        Gestante verificacaoGestante = gestanteRepository.bucarPorID(id);
+
+        if(verificacaoGestante.getIdGestante() == null){
+            throw new Exception("O RG digitado é inválido");
+        }
+
+        ArrayList<DadosFeto> listaDados = repository.buscarPorIdDaMae(id);
+
+        for(DadosFeto dadosFeto : listaDados){
+            DadosSelecionarDadosFeto dadosFetoDTO = new DadosSelecionarDadosFeto(
+                    dadosFeto.getIdDadosFeto(),
+                    dadosFeto.getIdFeto(),
+                    dadosFeto.getIdade(),
+                    dadosFeto.getFrequenciaCardiaca(),
+                    dadosFeto.getAceleracoes(),
+                    dadosFeto.getMovimentoFetalPorSegundo(),
+                    dadosFeto.getContracoes(),
+                    dadosFeto.getDesaceleracoes(),
+                    dadosFeto.getDesaceleracoesSeveras(),
+                    dadosFeto.getDesaceleracoesProlongadas(),
+                    dadosFeto.getVariacaoAnormalCurtoPrazo(),
+                    dadosFeto.getVariacaoMediaCurtoPrazo(),
+                    dadosFeto.getPorcentagemTempoVariacaoAnormal(),
+                    dadosFeto.getMediaVariacaoLongoPrazo(),
+                    dadosFeto.getLarguraHistograma(),
+                    dadosFeto.getValorMinimoHistograma(),
+                    dadosFeto.getValorMaximoHistograma(),
+                    dadosFeto.getNumeroPicosHistograma(),
+                    dadosFeto.getNumeroZerosHistograma(),
+                    dadosFeto.getModuloHistograma(),
+                    dadosFeto.getMediaHistograma(),
+                    dadosFeto.getMedianaHistograma(),
+                    dadosFeto.getVarianciaHistograma(),
+                    dadosFeto.getTendenciaHistograma(),
+                    dadosFeto.getSaudeFeto(),
+                    sdf.format(dadosFeto.getDataAvaliacao())
+            );
+
+            listaDTO.add(dadosFetoDTO);
+        }
+
+        return listaDTO;
+    }
+
+
+
     public ArrayList<DadosSelecionarDadosFeto> buscarDadosFetoPorRgDaMae(String rg) throws Exception {
         repository = new DadosFetoRepository();
         ArrayList<DadosSelecionarDadosFeto> listaDTO = new ArrayList<>();

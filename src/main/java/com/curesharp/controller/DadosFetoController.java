@@ -64,9 +64,22 @@ public class DadosFetoController {
     }
 
     @GET
+    @Path("/gestante/id/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response buscaPorIdDoDaMae(@PathParam("id") Long id){
+        try {
+            ArrayList<DadosSelecionarDadosFeto> dadosFetoDTO = business.buscarDadosFetoPorIdDaMae(id);
+            return Response.status(Response.Status.OK).entity(dadosFetoDTO).build();
+        }catch (Exception e){
+            error.setErro(e.getMessage());
+            return Response.status(Response.Status.NOT_FOUND).entity(error).build();
+        }
+    }
+
+    @GET
     @Path("/gestante/rg/{rg}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response buscaPorIdDoFeto(@PathParam("rg") String rg){
+    public Response buscaPorRgDaMae(@PathParam("rg") String rg){
         try {
             ArrayList<DadosSelecionarDadosFeto> dadosFetoDTO = business.buscarDadosFetoPorRgDaMae(rg);
             return Response.status(Response.Status.OK).entity(dadosFetoDTO).build();
